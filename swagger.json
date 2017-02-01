@@ -5,7 +5,6 @@
     "title" : "Vyze JSON Settlement API"
   },
   "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/scottweaver/VyzeSettlement/1.0",
   "schemes" : [ "https", "http" ],
   "paths" : {
     "/settlement/api" : {
@@ -321,5 +320,6 @@
       },
       "required" : [ "adjustment_type", "adjustment_date", "adjustment_amount", "adjustment_description" ]
     }
-  }
+  },
+  "basePath" : "/scottweaver/VyzeSettlement/1.0"
 }
