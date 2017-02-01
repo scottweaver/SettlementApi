@@ -16,7 +16,7 @@
           "200" : {
             "description" : "Get all transactions that are ready to be settled.",
             "schema" : {
-              "$ref" : "#/definitions/SettlementRequest"
+              "$ref" : "#/definitions/Clearing"
             }
           }
         }
@@ -27,7 +27,7 @@
           "200" : {
             "description" : "Reconcile requested settlements",
             "schema" : {
-              "$ref" : "#/definitions/SettlementResponse"
+              "$ref" : "#/definitions/SettlementReconiliation"
             }
           }
         }
@@ -40,7 +40,7 @@
           "200" : {
             "description" : "Get all transactions that are settled.",
             "schema" : {
-              "$ref" : "#/definitions/SettlementResponse"
+              "$ref" : "#/definitions/SettlementReconiliation"
             }
           }
         }
@@ -51,7 +51,7 @@
           "200" : {
             "description" : "Request settlement of transactions.",
             "schema" : {
-              "$ref" : "#/definitions/SettlementRequest"
+              "$ref" : "#/definitions/Clearing"
             }
           }
         }
@@ -64,13 +64,13 @@
       "type" : "object",
       "properties" : {
         "message_format" : {
-          "description" : "Indicates the type of message this is.  Can be either `settlement` and `reconciliation`.",
+          "description" : "Indicates the type of message this is.  Can be either `application/vyze.settlement.clearing.2.0+json` for clearing requests and `application/vyze.settlement.reconciliation.2.0+json` for settlement reconciliation.",
           "type" : "string",
-          "enum" : [ "settlement", "reconciliation" ]
+          "enum" : [ "application/vyze.settlement.clearing.2.0+json", "application/vyze.settlement.reconciliation.2.0+json" ]
         },
         "version" : {
-          "description" : "API version.  Current version is 1.0.",
-          "default" : "1.0",
+          "description" : "API version.  Current version is 2.0.",
+          "default" : "2.0",
           "type" : "string"
         },
         "timestamp" : {
@@ -81,7 +81,7 @@
       },
       "required" : [ "version", "timestamp", "message_format" ]
     },
-    "SettlementRequest" : {
+    "Clearing" : {
       "description" : "Parent object that holds Transactions ready for settlement.",
       "type" : "object",
       "properties" : {
@@ -174,7 +174,7 @@
       },
       "required" : [ "settlement_id", "merchant_id", "customer_account_number", "amount", "transaction_date", "type" ]
     },
-    "SettlementResponse" : {
+    "SettlementReconiliation" : {
       "description" : "Parent object for settlement reconciliation.",
       "type" : "object",
       "properties" : {
